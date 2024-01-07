@@ -6,6 +6,7 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { CustomFooter } from './footer';
+import CustomHeader from './header';
 
 // import CustomFooter from '../custom/footer';
 // import CustomHeader from '../custom/header';
@@ -77,7 +78,7 @@ const BaseLayout = () => {
             background: "none",
           }}
         >
-           {/* <CustomHeader/> */}
+           <CustomHeader/>
         </Header>
         <Content
           style={{
