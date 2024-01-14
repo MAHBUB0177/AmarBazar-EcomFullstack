@@ -6,12 +6,12 @@ import {
 } from "@ant-design/icons";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 
 const CustomHeader = ({ collapsed }) => {
   
-
+  const navigate = useNavigate();
     const items = [
         {
           label: "Profile",
@@ -24,11 +24,25 @@ const CustomHeader = ({ collapsed }) => {
           icon: <LogoutOutlined />,
         },
       ];
+
+      const handleMenuClick = (e) => {
+        if (e.key === "2") {
+          _handelLogout();
+        } else {
+          navigate(`${e.key}`);
+        }
+      };
     const menuProps = {
         items,
-        // onClick: handleMenuClick,
+        onClick: handleMenuClick,
       };
-
+    const _handelLogout = () => {
+        // dispatch(setAuth({}));
+        // dispatch(setUser({}));
+        localStorage.setItem('token',JSON.stringify(''))
+        localStorage.setItem('refreshtoken',JSON.stringify(''))
+        navigate(`/`);
+      };
 
   const onFinish = (e) => {
     console.log("first");
@@ -36,7 +50,7 @@ const CustomHeader = ({ collapsed }) => {
   return (
     <div className="flex flex-row justify-between  bg-white shadow-md px-10">
       <div className="py-3">
-        <Link to="/">
+        <Link to="/dashboard">
           <Flex className=" " horizontal>
             <FaCartShopping className="mt-[8px] text-2xl" />
             <p className="text-2xl font-semibold ">Amar Bazar</p>

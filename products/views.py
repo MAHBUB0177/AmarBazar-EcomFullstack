@@ -11,7 +11,7 @@ from rest_framework.authentication import TokenAuthentication
 from django.db.models import Q
 from django.utils import timezone
 from .models import *
-# from .serializers import *
+from .serializers import *
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.utils import timezone
@@ -22,3 +22,9 @@ def current_datetime(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now  %s.</body></html>" % now
     return HttpResponse(html)
+
+class customer_infoView(APIView):
+    def get(self,request):
+        customer_obj=Customer.objects.all()
+        customer_serializers=customerSerializers(customer_obj,many=True).data
+        return Response(customer_serializers)

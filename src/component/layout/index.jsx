@@ -21,13 +21,16 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  
-//   getItem('Dashboard', '/dashboard',  <DesktopOutlined />),
-//   getItem('All-Products', '/dashboard/product',<PieChartOutlined /> ),
+   getItem("Customer", "/dashboard/customer", <DesktopOutlined />),
+   getItem("Profile", "/dashboard/profile", <DesktopOutlined />),
+
+   
+  // getItem('Dashboard', '/customer',  <DesktopOutlined />),
+  //   getItem('All-Products', '/dashboard/product',<PieChartOutlined /> ),
   getItem('Profile', '', <FileOutlined />),
   getItem('Products', 'sub1', <UserOutlined />, [
-    getItem('Create', ''),
-    getItem('Product-list', '4'),
+  getItem('Create', ''),
+  getItem('Product-list', '4'),
   ]),
   getItem('User', 'sub2', <TeamOutlined />, [getItem('Create', '6'), getItem('All-user', '8')]),
   getItem('Transaction', '', <BiMoney />),
