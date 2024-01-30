@@ -138,12 +138,12 @@ USE_TZ = True
 
 # //JWTAuthentication
 
-SIMPLE_JWT={
-    'ACCESS_TOKEN_LIFETIME':timedelta(minutes=30),
-    'ROTATE_REFRESH_TOKENS':False,
-    'REFRESH_TOKEN_LIFEIME':timedelta(days=1)
+# SIMPLE_JWT={
+#     'ACCESS_TOKEN_LIFETIME':timedelta(minutes=30),
+#     'ROTATE_REFRESH_TOKENS':False,
+#     'REFRESH_TOKEN_LIFEIME':timedelta(days=1)
 
-}
+# }
 
 
 

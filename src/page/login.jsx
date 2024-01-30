@@ -5,9 +5,11 @@ import { FcGoogle } from "react-icons/fc";
 import { login } from '../service';
 import { message } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../redux/reducers/authReducers';
 
 export const Login = () => {
- 
+  const dispatch = useDispatch();
   //simple authentication part:
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -25,11 +27,12 @@ export const Login = () => {
     await login(payload)
     .then((res)=>{
      let user=res?.config.data
+     dispatch(setAuth(res));
      console.log(res,'-------------------')
     //  user=JSON.parse(user)
      localStorage.setItem('user',JSON.stringify(user))
      if(res?.data?.access !==null & res?.data?.access !== undefined && res?.data?.access !==""){
-    
+      
        localStorage.setItem('token',JSON.stringify(res?.data?.access))
        localStorage.setItem('refreshtoken',JSON.stringify(res?.data?.refresh))
        navigate('/dashboard')

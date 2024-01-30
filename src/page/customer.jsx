@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getCustomer } from '../service'
+import { useSelector } from 'react-redux';
 
 const Customer = () => {
+  const state = useSelector((state) => state.auth);
+
+  console.log(state,'===================')
+ 
     const [data,setData]=useState()
     console.log(data,'customer data')
 
